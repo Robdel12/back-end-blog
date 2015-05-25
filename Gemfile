@@ -18,6 +18,8 @@ gem 'byebug', '~> 4.0.5'
 # Twitter API stuffs
 gem "twitter", "~> 5.14.0"
 
+gem 'rack-cors', :require => 'rack/cors'
+
 gem "rspec-rails"
 
 # Keep the api keys out of the repo
