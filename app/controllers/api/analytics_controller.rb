@@ -5,6 +5,9 @@ class Api::AnalyticsController < ApplicationController
     params[:startDate] ||= "2015-01-01"
     params[:endDate] ||= "2015-01-16"
 
+    startDate = Date.parse(params[:startDate]).strftime("%Y-%m-%d")
+    endDate = Date.parse(params[:endDate]).strftime("%Y-%m-%d")
+
     analytic = {
       analytic: [
         id: "current",
@@ -14,7 +17,7 @@ class Api::AnalyticsController < ApplicationController
     }
 
     google_analytics = GoogleAnalytics.new
-    data = google_analytics.visitors(params[:startDate], params[:endDate])
+    data = google_analytics.visitors(startDate, endDate)
 
     data.each do |key, value|
       analytic[:analytic][0][:date] << key
