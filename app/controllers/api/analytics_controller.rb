@@ -1,5 +1,5 @@
 class Api::AnalyticsController < ApplicationController
-  before_filter :authorize_user
+  # before_filter :authorize_user
 
   def index
     params[:startDate] ||= "2015-01-01"
