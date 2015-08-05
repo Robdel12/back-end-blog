@@ -1,5 +1,4 @@
 class Api::PostsController < ApplicationController
-  include ActionController::HttpAuthentication::Token::ControllerMethods
   before_filter :authenticate_user_from_token!, only: [:create, :update, :destroy]
 
   def index
