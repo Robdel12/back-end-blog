@@ -7,9 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_from_token!
     authenticated = authenticate_with_http_token do |user_token, options|
-      puts "user_token #{user_token.present?}"
-      puts "options #{options.present?}"
-      puts "opts inspect #{options.inspect}"
+      puts "user_token #{user_token.present?} options #{options.present?} opts inspect #{options.inspect}"
       user_email = options[:email].presence
       user       = user_email && User.find_by_email(user_email)
 
