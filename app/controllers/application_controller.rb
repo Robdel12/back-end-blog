@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
         render json: 'Invalid authorization.'
       end
     end
+    puts authenticated
 
     if !authenticated
       render json: 'No authorization provided.'
