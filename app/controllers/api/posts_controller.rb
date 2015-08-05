@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-  before_filter :authorize_user, only: [:create, :update, :destroy]
+  before_filter :authenticate_user_from_token!, only: [:create, :update, :destroy]
 
   def index
     if params[:dashboard]
