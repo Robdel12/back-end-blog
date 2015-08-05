@@ -19,7 +19,7 @@ private
   end
 
   def authorize_user
-    puts "Current user? #{current_user.present?} #{current_user.authentication_token} #{current_user.email} #{current_user}"
+    logger.debug "Current user? #{current_user.present?} #{current_user.authentication_token} #{current_user.email} #{current_user}"
     unless current_user
       render text: "", status: 401
     end
