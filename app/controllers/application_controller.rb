@@ -6,13 +6,11 @@ class ApplicationController < ActionController::Base
   # protected
 
   def authenticate_user_from_token!
-    puts "this work?"
     authenticated = authenticate_with_http_token do |user_token, options|
-      puts user_token
-      puts options
+      puts "user_token #{user_token.present?}"
+      puts "options #{options.present?}"
       user_email = options[:email].presence
       user       = user_email && User.find_by_email(user_email)
-      puts "hey ma look at me #{user}"
 
       if user && Devise.secure_compare(user.authentication_token, user_token)
         sign_in user, store: false
