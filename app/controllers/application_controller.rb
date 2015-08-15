@@ -20,7 +20,7 @@ private
 
   def authorize_user
     unless current_user
-      render text: "", status: 401
+      render text: "Invalid credentials.", status: 401
     end
   end
 
