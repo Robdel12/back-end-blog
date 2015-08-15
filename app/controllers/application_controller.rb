@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
 
   # protected
 
@@ -13,12 +13,12 @@ class ApplicationController < ActionController::Base
       if user && Devise.secure_compare(user.authentication_token, user_token)
         sign_in user, store: false
       else
-        render json: 'Invalid authorization.'
+        render json: 'Invalid authorization.', status: 401
       end
     end
 
     if !authenticated
-      render json: 'No authorization provided.'
+      render json: 'No authorization provided.', status: 401
     end
   end
 
