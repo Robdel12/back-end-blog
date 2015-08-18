@@ -1,9 +1,9 @@
 class ContactMailer < ActionMailer::Base
-  default from: "robert@robert-deluca.com"
+  default from: "robertdeluca19@gmail.com"
 
   def contact_email(contact)
     @contact = contact
-    mail(to: "robert@robert-deluca.com", subject: "New contact from #{@contact.email}", from: @contact.email)
+    mail(to: "robertdeluca19@gmail.com", subject: "New contact from #{@contact.email}", from: @contact.email)
   end
 
 end
