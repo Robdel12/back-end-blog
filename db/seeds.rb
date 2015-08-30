@@ -8,29 +8,20 @@
 
 case Rails.env
 when "development"
-   Posts.create(
-    title: "Title 1",
-    post_slug: "title-1",
-    created_at: Time.now - 4.days,
-    excerpt: Faker::Lorem.sentences(1)[0],
-    body: Faker::Lorem.paragraphs(15)[0]
-  )
 
-  Posts.create(
-    title: "Title 2",
-    post_slug: "title-2",
-    created_at: Time.now - 2.days,
-    excerpt: Faker::Lorem.sentences(1)[0],
-    body: Faker::Lorem.paragraphs(15)[0]
-  )
-
-  Posts.create(
-    title: "Title 3",
-    post_slug: "title-3",
-    created_at: Time.now,
-    excerpt: Faker::Lorem.sentences(1)[0],
-    body: Faker::Lorem.paragraphs(15)[0]
-  )
+  (1..40).each do |i|
+    title = Faker::Lorem.sentences(1)[0]
+    date = Faker::Time.between(100.days.ago - 1, DateTime.now)
+    Posts.create(
+      title: "#{title} #{i}",
+      post_slug: title.dasherize,
+      created_at: date,
+      published_date: date,
+      excerpt: Faker::Lorem.sentences(1)[0],
+      is_published: true,
+      body: Faker::Lorem.paragraphs(15)[0]
+    )
+  end
 
   User.create([
     {
@@ -44,6 +35,7 @@ when "development"
       password_confirmation: '12345678'
     }
   ])
+
 end
 Timeline.create([
   {

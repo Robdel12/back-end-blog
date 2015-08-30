@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150204014145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contacts", force: true do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.text     "reason"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150204014145) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "post_slug"
     t.text     "excerpt"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150204014145) do
     t.datetime "published_date"
   end
 
-  create_table "timelines", force: true do |t|
+  create_table "timelines", force: :cascade do |t|
     t.text     "title"
     t.datetime "event_date"
     t.text     "description"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150204014145) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
