@@ -11,10 +11,11 @@ when "development"
 
   (1..40).each do |i|
     title = Faker::Lorem.sentences(1)[0]
+    post_slug = title.gsub(' ', '-').downcase
     date = Faker::Time.between(100.days.ago - 1, DateTime.now)
     Posts.create(
       title: "#{title} #{i}",
-      post_slug: title.dasherize,
+      post_slug: post_slug.gsub('.', ''),
       created_at: date,
       published_date: date,
       excerpt: Faker::Lorem.sentences(1)[0],
