@@ -9,7 +9,9 @@ Backend::Application.routes.draw do
     resources :analytics, only: [:index]
     resources :timeline
     resources :contacts
-    get "timelines" => redirect("api/timeline")
+    get "timelines", to: redirect("api/timeline")
+    get "timelines/:id", to: redirect("api/timeline/%{id}")
+    put "timelines/:id", to: redirect("api/timeline/%{id}")
   end
 
   devise_for :users, controllers: { sessions: 'sessions' }
